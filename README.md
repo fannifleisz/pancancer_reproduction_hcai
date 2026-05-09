@@ -19,20 +19,22 @@ The goal is to evaluate how the choice of optimizer (liblinear vs. SGD) influenc
 
 ## ⚙️ Setup
 
-Create and activate the conda environment:
+### Create and activate the conda environment:
 
 ```bash
 conda env create -f environment.yml
 conda activate pc-eval
-📊 Data Access & Preprocessing
+```
+
+### Data Access & Preprocessing
 
 ⚠️ Large data files (e.g., .tsv.gz, expression matrices) are not included in this repository due to GitHub file size limitations.
 
 Instead, the required data can be generated using the provided preprocessing notebook:
-
+```bash
 cd 00_process_data
 jupyter notebook download_data.ipynb
-
+```
 Run all cells in the notebook to automatically download and preprocess:
 
 Gene expression data (RNA-seq)
@@ -46,38 +48,39 @@ https://figshare.com/articles/dataset/TCGA_PanCanAtlas_Copy_Number_Data/6144122
 
 ⚠️ Note: This preprocessing step is required before running the experiments but is not clearly referenced in the original repository README.
 
-## 🧪 Experiments
+## Experiments
 
 Due to computational constraints, experiments were performed with a reduced setup:
 
 50 genes (instead of 84)
 2 cross-validation folds (instead of 4×2 repetitions)
 Reduced hyperparameter search
-Run liblinear (baseline)
+#### Run liblinear (baseline)
 cd 01_stratified_classification
 
+```
 python run_stratified_lasso_penalty.py \
     --genes top_50 \
     --num_folds 2 \
     --results_dir ../results
-Run SGD
+```
+#### Run SGD
+```
 python run_stratified_lasso_penalty.py \
     --genes top_50 \
     --sgd \
     --num_folds 2 \
     --results_dir ../results_sgd_small
-📈 Results
+```
+# 📈 Results
 
-The main qualitative finding of the paper was successfully reproduced:
+The results (with these changes:
 
-liblinear and SGD achieve comparable predictive performance
+- Smaller gene set
+- Reduced cross-validation
+- Limited computational resources)
 
-Observed differences compared to the paper are due to:
-
-Smaller gene set
-Reduced cross-validation
-Limited computational resources
-
-Figures comparing reproduced results with the original paper are available in:
-
-figures/
+can be found in:
+```
+pancancer-evaluation\01_stratified_classification
+```
