@@ -72,7 +72,7 @@ python run_stratified_lasso_penalty.py \
     --num_folds 2 \
     --results_dir ../results_sgd_small
 ```
-# 📈 Results
+## 📈 Results
 
 The results (with these changes:
 
