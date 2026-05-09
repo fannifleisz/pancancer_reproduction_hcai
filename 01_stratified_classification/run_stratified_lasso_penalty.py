@@ -97,7 +97,7 @@ if __name__ == '__main__':
                               verbose=args.verbose,
                               debug=args.debug)
 
-    genes_df = du.load_custom_genes(args.genes)
+    genes_df = du.load_top_50()
 
     # we want to run mutation prediction experiments:
     # - for true labels and shuffled labels

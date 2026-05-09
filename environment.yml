@@ -16,6 +16,6 @@ dependencies:
   - scikit-learn=1.1.1
   - seaborn=0.11.2
   - tqdm=4.64.0
-  - umap-learn=0.4.2
+  - umap-learn
   - upsetplot=0.6.1
 
